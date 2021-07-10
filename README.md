@@ -24,3 +24,13 @@ JCHIP8 works by reading the raw ROM files and executing the opcodes found in the
 - .gitignore
 - .classpath
 - .project
+
+## Running JCHIP8
+
+JCHIP8 supports all tested chip8 roms
+
+Usage:
+
+```
+java -jar jchip8.jar ./pong2.c8
+```

@@ -7,7 +7,7 @@ public class Main extends Thread {
 	private Chip chip8;
 	private ChipFrame frame;
 	
-	public Main() {
+	public Main(String[] args) {
 		System.out.println("JCHIP8 Chip8 System Emulation Software written in Java by RaidTheWeb");
 		System.out.println();
 		System.out.println("Attempting to start emulation...");
@@ -15,7 +15,12 @@ public class Main extends Thread {
 		System.out.println("Initializing Chip...");
 		chip8 = new Chip();
 		chip8.init();
-		chip8.loadProgram("./pong2.c8");
+		try {
+			chip8.loadProgram(args[0]);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.err.println("No ROM given.");
+			System.exit(1);
+		}
 		frame = new ChipFrame(chip8);
 		
 		
@@ -39,7 +44,7 @@ public class Main extends Thread {
 	}
 	
 	public static void main(String[] args) {
-		Main main = new Main();
+		Main main = new Main(args);
 		main.start();
 		
 	}
